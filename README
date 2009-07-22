@@ -91,3 +91,17 @@ rake features
 60 steps (3 failed, 54 skipped, 3 passed)
 ----------------------------------------------------------------------------------------------------------------
 
+# doing the bare minimum to make the test happy
+gedit app/controllers/books_controller.rb &
+
+# running the features again changes the error (see, already 15 steps completed successfully)
+rake features
+----------------------------------------------------------------------------------------------------------------
+      Could not find field: "book[title]" (Webrat::NotFoundError)
+      (eval):2:in `/^I fill in "([^\"]*)" with "([^\"]*)"$/'
+      features/register_new_books.feature:12:in `When I fill in "book[title]" with "<book_title>"'
+
+3 scenarios (3 failed)
+60 steps (3 failed, 42 skipped, 15 passed)
+----------------------------------------------------------------------------------------------------------------
+

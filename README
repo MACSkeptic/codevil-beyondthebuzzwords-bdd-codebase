@@ -149,3 +149,18 @@ rake features
 48 steps (3 pending, 45 passed)
 ----------------------------------------------------------------------------------------------------------------
 
+# to fix the error above, first we need to go back to the book specific steps and define what is a book saved on the database
+gedit features/step_definitions/book_steps.rb &
+
+# now, running the feature again gives us an error
+rake features
+----------------------------------------------------------------------------------------------------------------
+      expected nil? to return false, got true (Spec::Expectations::ExpectationNotMetError)
+      features/register_new_books.feature:22:in `And the book with the title "<book_title>" should have been saved on the database'
+
+3 scenarios (3 failed)
+48 steps (3 failed, 45 passed)
+----------------------------------------------------------------------------------------------------------------
+
+# the problem is that our book is not being saved to the database, so, on to it
+

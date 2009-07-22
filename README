@@ -71,9 +71,23 @@ gedit features/support/paths.rb &
 
 # running the features again changes the error
 rake features
-----------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 No route matches "/books/new" with {:method=>:get} (ActionController::RoutingError)
       (eval):2:in `/^I am on (.+)$/'
       features/register_new_books.feature:7:in `Given I am on the new book register page'
+----------------------------------------------------------------------------------------------------------------
+
+# creating the books contoller to fix the error just above
+gedit app/controllers/books_controller.rb &
+
+# running the features again changes the error
+rake features
+----------------------------------------------------------------------------------------------------------------
+      expected the following element's content to include "Title":
+       (Spec::Expectations::ExpectationNotMetError)
+      features/register_new_books.feature:8:in `Then I should see "Title"'
+
+3 scenarios (3 failed)
+60 steps (3 failed, 54 skipped, 3 passed)
 ----------------------------------------------------------------------------------------------------------------
 

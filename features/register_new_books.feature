@@ -23,7 +23,7 @@ Feature: Register new books
     And I should not see "<book_author>"
     And I should not see "<book_rating>"
     And I should not see "<book_synopsis>"
-    And I should see successfully
+    And I should see "successfully"
 
     Examples:
       | book_title        | book_rating | book_synopsis  | book_author         |

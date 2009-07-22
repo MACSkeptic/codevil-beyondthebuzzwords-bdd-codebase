@@ -5,6 +5,7 @@ class BooksController < ApplicationController
   end
 
   def create
+    Book.create(params[:book])
     render :text => "successfully"
   end
 

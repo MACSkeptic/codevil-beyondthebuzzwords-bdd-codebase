@@ -163,4 +163,41 @@ rake features
 ----------------------------------------------------------------------------------------------------------------
 
 # the problem is that our book is not being saved to the database, so, on to it
+gedit app/controllers/books_controller.rb &
+
+# running the feature one more time... \o/
+rake features
+----------------------------------------------------------------------------------------------------------------
+Feature: Register new books
+  In order to make my bookstore expansible
+  As a bookstore owner
+  I want to be able to register new books
+
+  Scenario Outline: User register a new book successfully                             # features/register_new_books.feature:6
+    Given I am on the new book register page                                          # features/step_definitions/webrat_steps.rb:6
+    Then I should see "Title"                                                         # features/step_definitions/webrat_steps.rb:93
+    And I should see "Author"                                                         # features/step_definitions/webrat_steps.rb:93
+    And I should see "Rating"                                                         # features/step_definitions/webrat_steps.rb:93
+    And I should see "Synopsis"                                                       # features/step_definitions/webrat_steps.rb:93
+    When I fill in "book[title]" with "<book_title>"                                  # features/step_definitions/webrat_steps.rb:22
+    And I fill in "book[author]" with "<book_author>"                                 # features/step_definitions/webrat_steps.rb:22
+    And I fill in "book[rating]" with "<book_rating>"                                 # features/step_definitions/webrat_steps.rb:22
+    And I fill in "book[synopsis]" with "<book_synopsis>"                             # features/step_definitions/webrat_steps.rb:22
+    And I press "Save"                                                                # features/step_definitions/webrat_steps.rb:14
+    Then I should not see "<book_title>"                                              # features/step_definitions/webrat_steps.rb:97
+    And I should not see "<book_author>"                                              # features/step_definitions/webrat_steps.rb:97
+    And I should not see "<book_rating>"                                              # features/step_definitions/webrat_steps.rb:97
+    And I should not see "<book_synopsis>"                                            # features/step_definitions/webrat_steps.rb:97
+    And I should see "successfully"                                                   # features/step_definitions/webrat_steps.rb:93
+    And the book with the title "<book_title>" should have been saved on the database # features/step_definitions/book_steps.rb:1
+
+    Examples:
+      | book_title       | book_rating | book_synopsis  | book_author         |
+      | the god delusion | 9           | kicks gods ass | richard dawkins     |
+      | the antichrist   | 9           | ubermesnch     | friedrich nietzsche |
+      | holy bible       | 0           | sucks badly    | charlatans          |
+
+3 scenarios (3 passed)
+48 steps (48 passed)
+----------------------------------------------------------------------------------------------------------------
 

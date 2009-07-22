@@ -136,3 +136,16 @@ rake features
 48 steps (3 failed, 18 skipped, 27 passed)
 ----------------------------------------------------------------------------------------------------------------
 
+# creating a method "create" on the books controller to fix the error above (remember, only do the minimum necessary)
+gedit app/controllers/books_controller.rb &
+
+# running the specs again gives us a nice outcome
+rake features
+----------------------------------------------------------------------------------------------------------------
+      TODO (Cucumber::Pending)
+      features/register_new_books.feature:22:in `And the book with the title "<book_title>" should have been saved on the database'
+
+3 scenarios (3 pending)
+48 steps (3 pending, 45 passed)
+----------------------------------------------------------------------------------------------------------------
+

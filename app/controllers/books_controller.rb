@@ -4,5 +4,9 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
+  def create
+    render :text => "successfully"
+  end
+
 end
 

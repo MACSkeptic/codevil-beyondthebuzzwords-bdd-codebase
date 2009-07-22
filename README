@@ -16,4 +16,64 @@ gedit features/register_new_books.feature &
 
 # executing the features
 rake features
+----------------------------------------------------------------------------------------------------------------
+Feature: Register new books
+  In order to make my bookstore expansible
+  As a bookstore owner
+  I want to be able to register new books
+
+  Scenario Outline: User register a new book successfully # features/register_new_books.feature:6
+    Given I am on the new book register page              # features/step_definitions/webrat_steps.rb:6
+    Then I should see "Title"                             # features/step_definitions/webrat_steps.rb:93
+    And I should see "Author"                             # features/step_definitions/webrat_steps.rb:93
+    And I should see "Rating"                             # features/step_definitions/webrat_steps.rb:93
+    And I should see "Synopsis"                           # features/step_definitions/webrat_steps.rb:93
+    When I fill in "book[title]" with "<book_title>"      # features/step_definitions/webrat_steps.rb:22
+    And I fill in "book[author]" with "<book_author>"     # features/step_definitions/webrat_steps.rb:22
+    And I fill in "book[rating]" with "<book_rating>"     # features/step_definitions/webrat_steps.rb:22
+    And I fill in "book[synopsis]" with "<book_synopsis>" # features/step_definitions/webrat_steps.rb:22
+    And I press "Save"                                    # features/step_definitions/webrat_steps.rb:14
+    Then I should be on the new book register page        # features/step_definitions/webrat_steps.rb:117
+    And I should see "Title"                              # features/step_definitions/webrat_steps.rb:93
+    And I should see "Rating"                             # features/step_definitions/webrat_steps.rb:93
+    And I should see "Author"                             # features/step_definitions/webrat_steps.rb:93
+    And I should see "Synopsis"                           # features/step_definitions/webrat_steps.rb:93
+    And I should not see "<book_title>"                   # features/step_definitions/webrat_steps.rb:97
+    And I should not see "<book_author>"                  # features/step_definitions/webrat_steps.rb:97
+    And I should not see "<book_rating>"                  # features/step_definitions/webrat_steps.rb:97
+    And I should not see "<book_synopsis>"                # features/step_definitions/webrat_steps.rb:97
+    And I should see "successfully"                       # features/step_definitions/webrat_steps.rb:93
+
+    Examples:
+      | book_title       | book_rating | book_synopsis  | book_author         |
+CLUE  | the god delusion | 9           | kicks gods ass | richard dawkins     |
+==>   Can't find mapping from "the new book register page" to a path.
+==>   Now, go and add a mapping in /home/macskeptic/workspace/rails/bookstore/features/support/paths.rb (RuntimeError)
+==>   /home/macskeptic/workspace/rails/bookstore/features/support/paths.rb:22:in `/^I am on (.+)$/'
+CLUE  features/register_new_books.feature:7:in `Given I am on the new book register page'
+      | the antichrist   | 9           | ubermesnch     | friedrich nietzsche |
+      Can't find mapping from "the new book register page" to a path.
+      Now, go and add a mapping in /home/macskeptic/workspace/rails/bookstore/features/support/paths.rb (RuntimeError)
+      /home/macskeptic/workspace/rails/bookstore/features/support/paths.rb:22:in `/^I am on (.+)$/'
+      features/register_new_books.feature:7:in `Given I am on the new book register page'
+      | holy bible       | 0           | sucks badly    | charlatans          |
+      Can't find mapping from "the new book register page" to a path.
+      Now, go and add a mapping in /home/macskeptic/workspace/rails/bookstore/features/support/paths.rb (RuntimeError)
+      /home/macskeptic/workspace/rails/bookstore/features/support/paths.rb:22:in `/^I am on (.+)$/'
+      features/register_new_books.feature:7:in `Given I am on the new book register page'
+
+3 scenarios (3 failed)
+60 steps (3 failed, 57 skipped)
+----------------------------------------------------------------------------------------------------------------
+
+# editing the paths to fix the error above (missing "the new book register page")
+gedit features/support/paths.rb &
+
+# running the features again changes the error
+rake features
+----------------------------------------------------------------------------------------------------------------
+No route matches "/books/new" with {:method=>:get} (ActionController::RoutingError)
+      (eval):2:in `/^I am on (.+)$/'
+      features/register_new_books.feature:7:in `Given I am on the new book register page'
+----------------------------------------------------------------------------------------------------------------
 

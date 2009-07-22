@@ -105,3 +105,9 @@ rake features
 60 steps (3 failed, 42 skipped, 15 passed)
 ----------------------------------------------------------------------------------------------------------------
 
+# adding an assertion at the end to ensure that the book has been correctly saved to the database
+gedit features/register_new_books.feature &
+
+# adding steps specific for the books expectations
+gedit features/step_definitions/book_steps.rb &
+

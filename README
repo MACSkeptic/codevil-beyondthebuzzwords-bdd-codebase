@@ -4,6 +4,16 @@ cucumber, mysql, webrat, rspec, rspec_rails, zentest
 # creating the application
 rails --database=mysql bookstore
 
+# creating the databases
+rake db:create:all
+rake db:migrate
+
 # adding cucumber support
 script/generate cucumber
+
+# writing the first feature
+gedit features/register_new_books.feature &
+
+# executing the features
+rake features
 

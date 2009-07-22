@@ -118,3 +118,21 @@ gedit app/views/books/new.html.erb &
 script/generate model book title:string author:string rating:decimal synopsis:text
 rake db:migrate
 
+# fix the controller to point to the newly created template
+gedit app/controllers/books_controller.rb &
+
+# changing the feature to focus on what is really important
+gedit features/register_new_books.feature &
+
+# let's run the feature again => all form filling worked ;)
+rake features
+----------------------------------------------------------------------------------------------------------------
+      No action responded to create. Actions: new (ActionController::UnknownAction)
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      (eval):2:in `/^I press "([^\"]*)"$/'
+      features/register_new_books.feature:16:in `And I press "Save"'
+
+3 scenarios (3 failed)
+48 steps (3 failed, 18 skipped, 27 passed)
+----------------------------------------------------------------------------------------------------------------
+

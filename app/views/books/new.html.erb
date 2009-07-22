@@ -1,0 +1,24 @@
+<% form_for @book, :url => { :action => 'create' } do |f| -%>
+  <% field_set_tag 'New Book' do -%>
+    <p>
+      <%= f.label 'title'%><br />
+      <%= f.text_field 'title'%>
+    </p>
+    <p>
+      <%= f.label 'author'%><br />
+      <%= f.text_field 'author'%>
+    </p>
+    <p>
+      <%= f.label 'rating'%><br />
+      <%= f.text_field 'rating'%>
+    </p>
+    <p>
+      <%= f.label 'synopsis'%><br />
+      <%= f.text_area 'synopsis'%>
+    </p>
+    <p>
+      <%= f.submit 'Save' %>
+    </p>
+  <% end -%>
+<% end -%>
+

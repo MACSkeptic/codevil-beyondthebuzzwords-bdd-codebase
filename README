@@ -111,3 +111,10 @@ gedit features/register_new_books.feature &
 # adding steps specific for the books expectations
 gedit features/step_definitions/book_steps.rb &
 
+# now, to fix the current error on the feature, we need to create a template
+gedit app/views/books/new.html.erb &
+
+# to be able to properly create the template we also will need the model, so on to it
+script/generate model book title:string author:string rating:decimal synopsis:text
+rake db:migrate
+

@@ -14,12 +14,7 @@ Feature: Register new books
     And I fill in "book[rating]" with "<book_rating>"
     And I fill in "book[synopsis]" with "<book_synopsis>"
     And I press "Save"
-    Then I should be on the new book register page
-    And I should see "Title"
-    And I should see "Rating"
-    And I should see "Author"
-    And I should see "Synopsis"
-    And I should not see "<book_title>"
+    Then I should not see "<book_title>"
     And I should not see "<book_author>"
     And I should not see "<book_rating>"
     And I should not see "<book_synopsis>"

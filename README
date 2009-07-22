@@ -1,0 +1,9 @@
+# gems you will need (not to mention all their dependencies)
+cucumber, mysql, webrat, rspec, rspec_rails, zentest
+
+# creating the application
+rails --database=mysql bookstore
+
+# adding cucumber support
+script/generate cucumber
+
